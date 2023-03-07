@@ -10,22 +10,24 @@ export default function Poster() {
 
   useEffect(() => {
     axios.get(Requests.requestPopular).then((res) => {
-      setMovie(res.data.results); //todo .results 
-      console.log('movie below')
-      console.log(movie);
+      setMovie(res.data.results); //todo .results
+      // console.log('movie below')
+      // console.log(movie);
     });
   }, []);
-  console.log('random no, below')
-  console.log(randomNoGenerator)
+  // console.log('random no, below')
+  // console.log(randomNoGenerator)
 
   // to short the description length of movie
-  const descriptionLength = (str, num) => {
-    if (str.length > num) {
-      return str.slice(0, num) + "...";
-    } else {
-      return str;
-    }
-  };
+  // const descriptionLength = (str, num) => {
+  //   if (str.length > num) {
+  //     return str.slice(0, num) + "...";
+  //   } else {
+  //     return str;
+  //   }
+  // };
+
+  const newArray = randomNoGenerator.overview.slice(0, 150) + "...";
 
   return (
     <div className="w-full h-[600px] md:h-[450px] shadow-lg shadow-red-900/25">
@@ -45,7 +47,7 @@ export default function Poster() {
             {randomNoGenerator?.title}
           </h2>
           <div className="mb-4 mt-1 bg-transparent font-text gap-4 flex md:mt-3 md:gap-3">
-            <button className="bg-white border hover:bg-gray-300 border-gray-400 rounded-sm py-2 px-4 text-black hover:-translate-y-1 hover:scale-105 transition ease-in-out delay-75 duration-300">
+            <button className="bg-transparent bg-white border hover:bg-gray-300 border-gray-400 rounded-sm py-2 px-4 text-black hover:-translate-y-1 hover:scale-105 transition ease-in-out delay-75 duration-300">
               Play
             </button>
             <button className="bg-transparent border hover:text-gray-400 border-gray-400 rounded-sm py-2 px-4 hover:-translate-y-1 hover:scale-105 transition ease-in-out delay-75 duration-300">
@@ -57,7 +59,8 @@ export default function Poster() {
           </p>
           <p className="bg-transparent text-gray-300 text-md mt-1">
             {/* {descriptionLength(randomNoGenerator?.overview, 150)} */}
-            {randomNoGenerator?.overview}
+            {/* {randomNoGenerator?.overview} */}
+            {newArray}
           </p>
         </div>
       </div>
