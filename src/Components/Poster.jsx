@@ -10,7 +10,7 @@ export default function Poster() {
 
   useEffect(() => {
     axios.get(Requests.requestPopular).then((res) => {
-      setMovie(res.data.results); //todo .results
+      setMovie(res.data.results); 
       // console.log('movie below')
       // console.log(movie);
     });
@@ -27,7 +27,7 @@ export default function Poster() {
   //   }
   // };
 
-  const newArray = randomNoGenerator.overview.slice(0, 150) + "...";
+  // const newArray = randomNoGenerator.overview.slice(0, 150) + "...";
 
   return (
     <div className="w-full h-[600px] md:h-[450px] shadow-lg shadow-red-900/25">
@@ -60,7 +60,7 @@ export default function Poster() {
           <p className="bg-transparent text-gray-300 text-md mt-1">
             {/* {descriptionLength(randomNoGenerator?.overview, 150)} */}
             {/* {randomNoGenerator?.overview} */}
-            {newArray}
+            {/* {newArray} */}
           </p>
         </div>
       </div>
