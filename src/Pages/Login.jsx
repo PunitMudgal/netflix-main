@@ -3,24 +3,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../Context/AuthContext';
 
 export default function Login() {
+  const {user, logIn} = UserAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('')
-  const { user, logIn } = UserAuth();
-  const navigate = useNavigate();
+  const [error, setError] = useState('');
+  const Navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    setError('')
-    try {
-      await logIn(email, password)
-      navigate('/')
-    } catch (error) {
+    try{
+      setError('')
+      await logIn(email, password);
+      Navigate('/');
+    }
+    catch(error){
       console.log(error);
-      setError(error.message)
+      setError(error.message);
     }
   }
-
+  
   return (
     <div className="w-full h-screen">
       <img

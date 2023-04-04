@@ -13,3 +13,4 @@ const ProtectedRoute = ({ children }) => {
 };
 
 export default ProtectedRoute;
+//? if the user is logout and type the /accout in the address bar to go to accout page without loging in then this page will prevent that situation.
