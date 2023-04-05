@@ -40,7 +40,7 @@ const SavedShows = () => {
   return (
     <div className="my-8 md:my-4">
       <h1 className="title my-4 text-2xl md:text-xl font-bold mt-4 md:mt-3 font-text text-gray-600 uppercase">
-      Favourite List
+        Favourite List
       </h1>
       <div className="relative flex items-center group select-none">
         {movies.length >= 5 ? (
