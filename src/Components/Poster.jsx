@@ -59,7 +59,7 @@ export default function Poster() {
           </p>
           <p className="bg-transparent text-gray-300 text-md mt-1">
             {/* {descriptionLength(randomNoGenerator?.overview, 150)} */}
-            {/* {randomNoGenerator?.overview} */}
+            {randomNoGenerator?.overview}
             {/* {newArray} */}
           </p>
         </div>

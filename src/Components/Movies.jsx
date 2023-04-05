@@ -1,8 +1,32 @@
 import React, { useState } from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { UserAuth } from "../Context/AuthContext";
+import { db } from "../firebase";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 export default function Movies(props) {
-  const [watchLater, setWatchLater] = useState(false);
+  const [like, setLike] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const { user } = UserAuth();
+
+  //ref: authContext line 14
+  const movieId = doc(db, "users", `${user?.email}`);
+
+  const SaveMoviesHandler = async () => {
+    if (user?.email) {
+      setLike(!like);
+      setSaved(true);
+      await updateDoc(movieId, {
+        savedShows: arrayUnion({
+          id: props.items.id,
+          title: props.items.title,
+          img: props.items.backdrop_path,
+        }),
+      });
+    } else {
+      alert("Login First To Save The Show!");
+    }
+  };
 
   return (
     <div className="relative w-[280px] md:w-[240] sm:w-[190px] inline-block cursor-pointer p-1 shadow-md shadow-red-900/20 border border-gray-800 m-1 hover:shadow-lg hover:shadow-red-900/20  hover:-translate-y-1 hover:scale-105 transition ease-in-out delay-75 duration-300">
@@ -16,8 +40,8 @@ export default function Movies(props) {
           {props.items?.title}
         </p>
 
-        <p>
-          {watchLater ? (
+        <p onClick={SaveMoviesHandler}>
+          {like ? (
             <FaHeart className="absolute top-4 right-4 text-gray-500" />
           ) : (
             <FaRegHeart className="absolute top-4 right-4 text-gray-500" />
