@@ -29,9 +29,9 @@ export function AuthContextProvider({ children }) {
       setUser(currentUser);
     });
     return () => {
-      unsubscribe();
+      unsubscribe()
     }
-  });
+  }, []);
 
   return <AuthContext.Provider value={{user, signUp, logIn, logOut}}>{children}</AuthContext.Provider>;
 }
